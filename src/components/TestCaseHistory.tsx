@@ -49,25 +49,27 @@ const TestCaseHistory = ({
         {/* Histórico de Testes */}
         <div>
           <h3 className="text-lg font-semibold text-gray-300 mb-3">Histórico de Testes:</h3>
-          <ul id="history-list" className="space-y-2">
-            {history.length > 0 ? (
-              history.map((item, index) => (
-                <li key={index} className="p-3 bg-gray-700 rounded-lg flex justify-between items-center border border-gray-600">
-                  <span className="text-gray-200">
-                    Score: {analyzeSomething(item).score}, Nível: {analyzeSomething(item).level}
-                  </span>
-                  <Button
-                    onClick={() => setFormValues(item)} // Usa setFormValues para recarregar no formulário principal
-                    className="text-blue-400 hover:text-blue-300 text-sm font-medium"
-                  >
-                    Recarregar
-                  </Button>
-                </li>
-              ))
-            ) : (
-              <p id="no-history-message" className="text-gray-400 text-sm mt-2">Nenhum teste no histórico ainda.</p>
-            )}
-          </ul>
+          <div className="max-h-64 overflow-y-auto pr-2 custom-scrollbar">
+            <ul id="history-list" className="space-y-2">
+              {history.length > 0 ? (
+                history.map((item, index) => (
+                  <li key={index} className="p-3 bg-gray-700 rounded-lg flex justify-between items-center border border-gray-600">
+                    <span className="text-gray-200">
+                      Score: {analyzeSomething(item).score}, Nível: {analyzeSomething(item).level}
+                    </span>
+                    <Button
+                      onClick={() => setFormValues(item)} // Usa setFormValues para recarregar no formulário principal
+                      className="text-blue-400 hover:text-blue-300 text-sm font-medium"
+                    >
+                      Recarregar
+                    </Button>
+                  </li>
+                ))
+              ) : (
+                <p id="no-history-message" className="text-gray-400 text-sm mt-2">Nenhum teste no histórico ainda.</p>
+              )}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
