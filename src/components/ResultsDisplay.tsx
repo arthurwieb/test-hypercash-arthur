@@ -25,9 +25,8 @@ const ResultsDisplay = ({
 
   const renderBreakdownBars = () => {
     const maxScore = 100;
-    const dateNow = Date.now()
+    const dateNow = Date.now();
 
-    // acho que não vou usar a description
     const breakdownValues = [
       { name: 'Valor base', value: formValues.val * 20, description: 'Valor decimal para cálculo base (w1). Contribui com 0.2 por unidade.' },
       { name: 'Flag 1 Ativa', value: formValues.flag1 ? 10 : 0, description: 'Indica se a flag 1 está ativa (w2). Contribui com 10 pontos se ativa.' },
@@ -53,6 +52,19 @@ const ResultsDisplay = ({
                 {item.value}
             </span>
           </div>
+
+          {/* Tooltip com a descrição */}
+          {item.description && ( // Renderiza apenas se houver uma descrição
+            <div className="
+              absolute left-1/2 transform -translate-x-1/2 -top-10
+              opacity-0 invisible group-hover:opacity-100 group-hover:visible
+              bg-gray-700 text-white text-xs rounded py-1 px-2 pointer-events-none
+              transition-all duration-300 z-10 w-max
+            ">
+              {item.description}
+              <div className="absolute left-1/2 -bottom-1 transform -translate-x-1/2 w-0 h-0 border-l-4 border-l-transparent border-r-4 border-r-transparent border-t-4 border-t-gray-700"></div>
+            </div>
+          )}
         </div>
       );
     });
