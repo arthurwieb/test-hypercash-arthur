@@ -2,7 +2,6 @@
 "use client"; // Marca este componente como um Client Component
 
 import { Button } from '@mantine/core';
-import React from 'react';
 
 // Importar interfaces e schemas de arquivos separados
 import { analyzeSomething } from '@/lib/analysisLogic'; // Precisamos desta função para analisar itens do histórico
@@ -17,13 +16,13 @@ interface TestCaseHistoryProps {
   setFormValues: (values: InputData) => void; // Para recarregar dados do histórico no formulário principal
 }
 
-const TestCaseHistory: React.FC<TestCaseHistoryProps> = ({
+const TestCaseHistory = ({
   testCases,
   history,
   loadTestCase,
   getLevelColorClass,
   setFormValues,
-}) => {
+}: TestCaseHistoryProps) => {
   return (
     <div className="lg:col-span-2 bg-gray-800 rounded-xl shadow-lg p-6 md:p-8 mt-8 border border-gray-700">
       <h2 className="text-2xl font-bold text-gray-100 mb-6">Casos de Teste e Histórico</h2>

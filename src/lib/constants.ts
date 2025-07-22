@@ -19,7 +19,7 @@ export const testCases: TestCase[] = [
       addr1: "Street A",
       addr2: "Street A",
       count: 2,
-      date: "2025-07-10"
+      date: new Date("2025-07-10")
     },
     expected: "GREEN"
   },
@@ -27,14 +27,14 @@ export const testCases: TestCase[] = [
     name: "Caso Suspeito",
     data: {
       val: 2.0,
-      flag1: true,
-      text: "longtext",
-      hour: 2,
-      email: "user@temp.com",
+      flag1: false,
+      text: "short",
+      hour: 7,
+      email: "user@gmail.com",
       addr1: "Street X",
-      addr2: "Street Y",
+      addr2: "Street X",
       count: 7,
-      date: "2025-06-01"
+      date: new Date("2025-06-01")
     },
     expected: "YELLOW"
   },
@@ -49,22 +49,22 @@ export const testCases: TestCase[] = [
       addr1: "Main St",
       addr2: "Side Ave",
       count: 10,
-      date: "2025-07-18"
+      date: new Date("2025-07-18")
     },
     expected: "RED"
   },
   {
     name: "Apenas Email Temp",
     data: {
-      val: 1.0,
+      val: 0.5,
       flag1: false,
-      text: "short",
+      text: "test",
       hour: 10,
       email: "test@temp.com",
       addr1: "Street A",
       addr2: "Street A",
       count: 2,
-      date: "2025-07-10"
+      date: new Date("2025-07-10")
     },
     expected: "GREEN"
   },
@@ -74,12 +74,12 @@ export const testCases: TestCase[] = [
       val: 1.0,
       flag1: false,
       text: "short",
-      hour: 1,
+      hour: 7,
       email: "user@example.com",
       addr1: "Street A",
       addr2: "Street B",
       count: 2,
-      date: "2025-07-10"
+      date: new Date("2025-07-10")
     },
     expected: "YELLOW"
   }

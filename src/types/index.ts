@@ -7,7 +7,7 @@ export interface InputData {
   addr1: string;
   addr2: string;
   count: number;
-  date: string;
+  date: Date;
 }
 
 export interface AnalysisResult {

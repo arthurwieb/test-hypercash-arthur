@@ -1,22 +1,20 @@
-"use client";
+// src/components/analysis/InputForm.tsx
+"use client"; // Marca este componente como um Client Component
+
 import { Button, Group, NumberInput, Switch, Text, TextInput } from '@mantine/core';
 import { DatePickerInput } from '@mantine/dates';
-import { UseFormReturnType } from '@mantine/form'; // Importa o tipo do useForm
-import { z } from 'zod'; // Importa Zod para tipagem
+import { UseFormReturnType } from '@mantine/form';
+import { z } from 'zod';
 
-// Importar o schema Zod para inferir o tipo do formulário
 import { inputDataSchema } from '@/schemas/inputDataSchema';
+
 type InputDataForm = z.infer<typeof inputDataSchema>;
 
-// Define as props que o InputForm irá receber, sem React.FC
 interface InputFormProps {
   form: UseFormReturnType<InputDataForm>;
   onSubmit: (values: InputDataForm) => void;
-  // Se o componente pudesse receber filhos, você adicionaria:
-  // children?: React.ReactNode;
 }
 
-// A função do componente é definida diretamente, com as props tipadas
 const InputForm = ({ form, onSubmit }: InputFormProps) => {
   return (
     <div className="bg-gray-800 rounded-xl shadow-lg p-6 md:p-8 border border-gray-700">
@@ -50,6 +48,7 @@ const InputForm = ({ form, onSubmit }: InputFormProps) => {
           placeholder="Ex: short"
           className="w-full"
           description="Comprimento do texto. Se maior que 4 caracteres (w3), contribui com 8 pontos."
+          value={form.values.text}
           {...form.getInputProps('text')}
         />
 
@@ -105,19 +104,17 @@ const InputForm = ({ form, onSubmit }: InputFormProps) => {
         {/* Campo Data (DatePickerInput) */}
         <DatePickerInput
           label="Data:"
-          placeholder="YYYY-MM-DD"
-          valueFormat="YYYY-MM-DD"
+          placeholder="Selecione a data"
+          valueFormat="DD/MM/YYYY" // Formato de exibição
           className="w-full"
-          description="Data de referência (YYYY-MM-DD). Se for nos últimos 7 dias (w8), contribui com 14 pontos."
+          description="Data de referência. Se for nos últimos 7 dias (w8), contribui com 14 pontos."
           {...form.getInputProps('date')}
-          onChange={(value) => form.setFieldValue('date', value ? value.toString().split('T')[0] : '')}
-          value={form.values.date ? new Date(form.values.date) : null}
         />
 
         <Button
           type="submit"
           className="w-full mt-6 py-3 px-6 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 transition duration-200 flex items-center justify-center gap-2 md:col-span-2"
-          // leftIcon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>}
+          //leftIcon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>}
         >
           Analisar
         </Button>

@@ -1,4 +1,4 @@
-import { AnalysisResult, InputData } from '@/types'; // Importa as interfaces
+import { AnalysisResult, InputData } from '@/types';
 
 export function analyzeSomething(input: InputData): AnalysisResult {
   const inputDate = new Date(input.date);

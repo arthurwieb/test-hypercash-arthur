@@ -25,6 +25,7 @@ const ResultsDisplay = ({
 
   const renderBreakdownBars = () => {
     const maxScore = 100;
+    const dateNow = Date.now()
 
     // acho que não vou usar a description
     const breakdownValues = [
@@ -35,7 +36,7 @@ const ResultsDisplay = ({
       { name: 'Email Temporário', value: formValues.email.includes('@temp') ? 12 : 0, description: 'Endereço de e-mail. Se contém "@temp" (w5), contribui com 12 pontos.' },
       { name: 'Endereços Diferentes', value: formValues.addr1 !== formValues.addr2 ? 20 : 0, description: 'Primeiro endereço. Se diferente do segundo endereço (w6), contribui com 20 pontos.' },
       { name: 'Contador Alto', value: formValues.count > 5 ? 9 : 0, description: 'Contador numérico. Se maior que 5 (w7), contribui com 9 pontos.' },
-      { name: 'Data Recente', value: (Date.now() - new Date(formValues.date).getTime()) / (1000 * 60 * 60 * 24) < 7 ? 14 : 0, description: 'Data de referência (YYYY-MM-DD). Se for nos últimos 7 dias (w8), contribui com 14 pontos.' },
+      { name: 'Data Recente', value: (dateNow - new Date(formValues.date).getTime()) / (1000 * 60 * 60 * 24) < 7 ? 14 : 0, description: 'Data de referência (YYYY-MM-DD). Se for nos últimos 7 dias (w8), contribui com 14 pontos.' },
     ];
 
     return breakdownValues.map((item, index) => {
